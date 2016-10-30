@@ -3,9 +3,6 @@ var app=angular.module("tdmatrix",["ngRoute"]);
 app.config(function($routeProvider)
 {
   
-   $routeProvider.$on('$viewContentLoaded', function() {
-       alert("please wait while loading");
-    });
   $routeProvider.when("/",
   {
     templateUrl:"Pages/Demo/Demo.html",
