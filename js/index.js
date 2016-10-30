@@ -2,9 +2,6 @@ var app=angular.module("tdmatrix",["ngRoute"]);
 
 app.config(function($routeProvider)
 {
-   $routeProvider.$on('$viewContentLoaded', function() {
-       $templateCache.removeAll();
-    });
   $routeProvider.when("/",
   {
     templateUrl:"Pages/Demo/Demo.html",
