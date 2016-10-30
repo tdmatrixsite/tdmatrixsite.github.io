@@ -1,0 +1,76 @@
+<div ng-init="init()">
+<h4><p><strong>TDMATRIX</strong> (Term document matrix) is a javascript library used for parsing text using term document matrix methodology</p></h4>
+
+
+<div class="container alert alert-danger">
+  <a  class="close" data-dismiss="alert" onclick="return false;" aria-label="close">&times;</a>
+  <h4>This is a demo that demonstrate the functions of term document matrix creation , apply term freqency normlizing and grouping sentences according to their similarity... Insert text in the box below and you will see generated sentences and also You can click on the generated sentences to see their terms with details</p></h4>
+</div>
+
+
+<div class="col-xs-12 col-sm-6">
+
+<textarea class="contentTxtArea" ng-model="InsertedQuote" ng-change="TextChanged()" placeholder="Insert text here......."></textarea>
+
+
+  <div class="col-xs-12 center-block alert alert-info top-buffer23 ">
+  <span class="col-xs-10 paddingtop5">I want terms with  weight less than this value to be removed from matrix</span><input type="number" ng-model="MinWeight" step=".01" ng-change="TextChanged()"></input>
+  </div>
+
+  <div class="col-xs-12 center-block alert alert-info ">
+  <span class="col-xs-10 paddingtop5">I want documents with distance less than this balue to be in the same group</span><input type="number" ng-model="MinMatchingDistance" step=".01" ng-change="TextChanged()" ></input>
+
+  </div>
+</div>
+
+</div>
+
+<div class="col-xs-12 col-sm-6 sentencesDiv">
+<div class="text-center"><h3>Result</h3></div>
+<div class="alert alert-success result col-xs-12" ng-repeat="groupIndex in GroupSentences track by $index" id="sentencesDiv">
+<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <ul class="col-xs-12">
+                <li class="left sentence" ng-repeat="sentence in ExtractedSentneces track by $index" ng-click="ShowSentenceTerms($index)" ng-if="sentenceSet.parent[$index]==groupIndex">{{sentence.value}}</li>
+                </ul>
+      </div>
+
+                                  </div>
+
+<div class="modal" id="portfolioModal2" ng-class="IsSenetenceTermsShow?'shown':'hidden'"  >
+                                              <div class="modal-content">
+                                                  <div class="sentence btn-success text-center padding10">
+                                                      <strong>TD-MATRIX</strong>
+                                                  </div>
+                                                  <div class="container darkgreenfont bottom20 text-center">
+                                                  <string>{{selectedSentence.value}}</strong>
+                                                  </div>
+
+                                                  <div class="container text-center termRow btn-warning ">
+                                                    <div class="col-xs-3">Value</div>
+                                                  <div class="col-xs-3">Stem</div>
+                                                  <div class="col-xs-2">Weight</div>
+                                                  <div class="col-xs-4">DocumentFrequency</div>
+                                                </div>
+                                                <div class="container text-center termRow " ng-repeat="term in selectedSentence.terms track by $index">
+                                                  <div class="col-xs-3">{{term.value}}</div>
+                                                <div class="col-xs-3">{{term.stem}}</div>
+                                                <div class="col-xs-2">{{term.weight.toFixed(2)}}</div>
+                                                <div class="col-xs-4">{{term.documentFreq.value}}</div>
+                                              </div>
+
+
+                                            <div class="container">
+                                              <div class="row  center-block text-center">
+                                            <div class="sentence col-sm-1 btn-success center-block padding10 " ng-click="HideSentenceTerms()">
+                                                <strong>Hide</strong>
+                                            </div>
+                                          </div>
+                                          </div>
+
+                                              </div>
+                                          </div>
+<script>
+
+</script>
+
+</div>
