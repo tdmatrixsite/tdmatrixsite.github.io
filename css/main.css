@@ -10,6 +10,19 @@
     word-wrap: break-word;
  }
 
+.logoSection {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.mregydevlogo {
+    background: #DD2C00;
+    color: white;
+    padding: 10;
+    border-radius: 50%;
+    margin-right: 2px;
+}
 /* Toggle Styles */
 
 #wrapper {
